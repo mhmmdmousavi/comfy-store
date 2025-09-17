@@ -30,13 +30,13 @@ export default function Home() {
             </div>
             <ul className="grid grid-cols-3 gap-4 mx-10 my-10 w-10/12">
                 {items.map((item)=>(
-                    <Link to={`products/${item.id}`} key={item.id}>                    
+                    <Link to={`/products/${item.id}`} key={item.id}>                    
                         <li className="flex flex-col items-center shadow-xl rounded-lg overflow-hidden hover:shadow-2xl gap-2 p-2">
                             <div className="w-84 h-54 overflow-hidden">
                             <img className="rounded-lg w-full h-full object-cover"  src={item.attributes.image} alt="" />
                             </div>
                             <p className="font-semibold text-center">{item.attributes.title}</p>
-                            <p className="text-sm text-blue-800">{item.attributes.price}</p>
+                            <p className="text-sm text-blue-800">${item.attributes.price.toLocaleString()}</p>
                         </li>
                     </Link>
                 ))}
