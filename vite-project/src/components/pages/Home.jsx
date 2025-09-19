@@ -3,10 +3,12 @@ import { client } from "../lib";
 import Banner from "../shared/banner";
 import Header from "../shared/Header";
 import { Link } from "react-router";
+import { useAuth } from "../../context/AuthContext";
 
 export default function Home() {
     const[items, setItems] = useState([])
-    
+    const { login } = useAuth()
+
     async function getFeatured() {
         try {
             const response = await client.get("products?featured=true")
@@ -18,9 +20,9 @@ export default function Home() {
             
         }
     }
-
+    
     useEffect(()=>{getFeatured()},[])
-
+   
     return(
         <div className="pb-10 flex flex-col items-center">
             <Header/>
